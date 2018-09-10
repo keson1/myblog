@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}首页{% endblock %}
+{% block main%}
+	<div id="main" class="content">
+		<div class="container">
+			<article itemscope="itemscope">
+				<div class="posts-list js-posts">
+					{% for blog in blogs %}
+					{% ifequal blog.style 1 %}
+					<div class="post post-layout-list" data-aos="fade-up">
+						<div class="status_list_item icon_kyubo">
+							<div class="status_user" style="background-image: url(/statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
+								<div class="status_section">
+									<a href="{% url 'detail' blog.blog.id %}" class="status_btn">{{ blog.blog.title }}</a>
+									<div class="review-item-creator">{{ blog.blog.created }} /<b><a href="{% url 'category_detail' blog.blog.category.id %}">{{ blog.blog.category.name }}</a></b></div>
+									<div><span class="total-comments-on-post pull-left">{{ blog.comments }} Comments</span></div>
+									{% autoescape off %}
+									<!--<p class="section_p">{{ blog.blog.content|slice:"80" }}...</p>-->
+									<p class="section_p">{{ blog.blog.summary }}</p>
+									{% endautoescape %}
+									<div class="post-footer">
+										<br />
+										{% for tag in blog.tags %}
+											<button class="gaz-btn primary" >{{ tag.name }}</button>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endifequal %}
+					{% ifequal blog.style 2 %}
+					<div class="post post-layout-list" data-aos="fade-up">
+						<div class="postnormal review ">
+							<div class="post-container review-item">
+								<div class="row review-item-wrapper">
+									<div class="col-sm-3">
+										<a rel="nofollow" href="{% url 'detail' blog.blog.id %}">
+											<div class="review-item-img" style="background-image: url(/statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+										</a>
+									</div>
+									<div class="col-sm-9 flex-xs-middle">
+										<div class="review-item-title">
+											<a href="{% url 'detail' blog.blog.id %}" rel="bookmark">{{ blog.blog.title }}</a>
+										</div>
+										<div class="review-item-creator">{{ blog.blog.created }} /<b><a href="{% url 'category_detail' blog.blog.category.id %}">{{ blog.blog.category.name }}</a></b></div>
+										<span class="total-comments-on-post">{{ blog.comments }} Comments</span>
+										<!--	<span class="review-item-info"><b>总浏览量：</b>1203 reads</span> -->
+									</div>
+								</div>
+								<div class="review-bg-wrapper">
+									<div class="bg-blur" style="background-image: url(/statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+								</div>
+							</div>
+							<div class="post-container">
+								{% autoescape off %}
+								<!--<div class="entry-content">{{ blog.blog.content|slice:"80" }}...</div>-->
+								<div class="entry-content">{{ blog.blog.summary }}</div>
+								{% endautoescape %}
+								<div class="post-footer">
+									{% for tag in blog.tags %}
+										<button class="gaz-btn primary" >{{ tag.name }}</button>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endifequal%}
+					{% ifequal blog.style 3 %}
+					<div class="post post-layout-list" data-aos="fade-up">
+						<div class="postnormal review ">
+							<div class="post-container review-item">
+								<div class="row review-item-wrapper">
+									<div class="col-sm-3">
+										<a rel="nofollow" href="{% url 'detail' blog.blog.id %}">
+											<div class="review-item-img" style="background-image: url(/statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+										</a>
+									</div>
+									<div class="col-sm-9 flex-xs-middle">
+										<div class="review-item-title">
+											<a href="{% url 'detail' blog.blog.id %}" rel="bookmark">{{ blog.blog.title }}</a>
+										</div>
+										<div class="review-item-creator">{{ blog.blog.created }} /<b><a href="{% url 'category_detail' blog.blog.category.id %}">{{ blog.blog.category.name }}</a></b></div>
+										<span class="total-comments-on-post">{{ blog.comments }} Comments</span>
+										<!--<span class="review-item-info"><b>总浏览量：</b>1600 reads</span>-->
+									</div>
+								</div>
+								<div class="review-bg-wrapper">
+									<div class="bg-blur" style="background-image: url(/statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+								</div>
+							</div>
+							<div class="post-container">
+								{% autoescape off %}
+								<!--<div class="entry-content">{{ blog.blog.content|slice:"80" }}...</div>-->
+								<div class="entry-content">{{ blog.blog.sumamry }}</div>
+								{% endautoescape %}
+								<div class="post-footer">
+									{% for tag in blog.tags %}
+										<button class="gaz-btn primary" >{{ tag.name }}</button>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endifequal%}
+					{% ifequal blog.style 4 %}
+					<div class="post post-layout-list js-gallery" data-aos="fade-up">
+						<div class="post-album icon_kyubo">
+							<div class="row content">
+								<div class="bg" style="background-image: url(/statics/images/IMG_0150.jpg);"></div>
+								<div class="status_section flex-xs-middle">
+									<a href="{% url 'detail' blog.blog.id %}" class="status_btn">{{ blog.blog.title }}</a>
+									<div class="review-item-creator">{{ blog.blog.created }} /<b><a href="{% url 'category_detail' blog.blog.category.id %}">{{ blog.blog.category.name }}</a></b></div>
+									<div><span class="total-comments-on-post pull-left">{{ blog.comments }} Comments</span></div>
+									{% autoescape off %}
+									<!--<p class="section_p">{{ blog.blog.content|slice:"80" }}...</p>-->
+									<p class="section_p">{{ blog.blog.summary }}</p>
+									{% endautoescape %}
+									<div class="post-footer">
+										{% for tag in blog.tags %}
+										<button class="gaz-btn primary" >{{ tag.name }}</button>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endifequal %}
+					{% endfor %}
+				</div>
+				<!-- post-formats end Infinite Scroll star -->
+				<!-- post-formats -->
+				<div class="pagination js-pagination">
+					<div class="js-next pagination__load">
+						{% if bloglist.has_previous %}
+							<a class='page-numbers' href='?page={{ bloglist.previous_page_number }}'>&lt;</a>
+						{% endif %}
+						{% for page in bloglist.paginator.page_range %}
+							{% if bloglist.number == page %}
+								<span aria-current='page' class='page-numbers current'>{{ page }}</span>
+							{% else %}
+								<a class='page-numbers' href='?page={{ page }}'>{{ page }}</a>
+							{% endif %}
+					<!--	<span class="page-numbers dots">&hellip;</span> -->
+						{% endfor %}
+						{% if bloglist.has_next %}
+							<a class='page-numbers' href='?page={{ bloglist.next_page_number }}'>&gt;</a>
+						{% endif %}
+					</div>
+				</div>
+				<!-- -pagination  -->
+			</article>
+		</div>
+	</div>
+{% endblock %}

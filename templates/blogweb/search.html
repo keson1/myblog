@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}搜索结果{% endblock %}
+{% block main %}
+	<div id="main" class="content">
+		<div class="container">
+			<h1 class="page-title">以&ldquo;{{ query }}&rdquo;为关键字</h1>
+			<p class="Searchmeta">共计 {{ count }} 篇文章</p>
+			<div class="location">当前位置：
+				<a href="{% url 'index' %}">首页</a> &raquo; 搜索结果 &raquo; {{ query }}
+			</div>
+			{% for result in results %}
+			<div class="posts-list js-posts">
+				<div class="archive-post">
+					<div class="type">
+						<div class="mask"><i class="iconfont">&#xe603;</i></div>
+					</div>
+					<h2 class="archive-title" style="color: #">
+						<span><a href="{% url 'detail' result.id%}">{{ result.title }}</a></span>
+						<div class="post-time">{{ result.created }}</div>
+					</h2>
+					<div class="post-category">
+						<a href="{% url 'category_detail' result.category.id %}" rel="category tag">{{ result.category.name }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="pagination js-pagination">
+				<div class="js-next pagination__load">
+					{% if results.has_previous %}
+						<a class='page-numbers' href='?page={{ results.previous_page_number }}&s={{ query }}'>&lt;</a>
+					{% endif %}
+					{% for page in results.paginator.page_range %}
+						{% if results.number == page %}
+							<span aria-current='page' class='page-numbers current'>{{ page }}</span>
+						{% else %}
+							<a class='page-numbers' href='?page={{ page }}&s={{ query }}'>{{ page }}</a>
+						{% endif %}<!--	<span class="page-numbers dots">&hellip;</span> -->
+					{% endfor %}
+					{% if results.has_next %}
+						<a class='page-numbers' href='?page={{ results.next_page_number }}&s={{ query }}'>&gt;</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

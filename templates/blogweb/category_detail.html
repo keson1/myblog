@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}分类详情{% endblock %}
+{% block main %}
+	<div id="main" class="content">
+		<div class="container">
+			<h1 class="page-title">分类详情</h1>
+			<p class="Searchmeta">共计 {{ blogs.count }} 篇文章</p>
+			<div class="location">当前位置：
+				<a href="{% url 'index' %}">首页</a> &raquo; <a href="{% url 'category' %}">分类</a> &raquo; {{ category.name }}
+			</div>
+			{% for blog in blogs %}
+			<div class="posts-list js-posts">
+				<div class="archive-post">
+					<div class="type">
+						<div class="mask"><i class="iconfont">&#xe603;</i></div>
+					</div>
+					<h2 class="archive-title" style="color: #">
+						<span><a href="{% url 'detail' blog.id %}">{{ blog.title }}</a></span>
+						<div class="post-time">{{ blog.created }}</div>
+					</h2>
+					<div class="post-category">
+						<a href="" rel="category tag">{{ category.name }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="mt+">
+				<div class="pagination js-pagination">
+					<div class="js-next pagination__load"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
