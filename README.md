@@ -5,4 +5,4 @@
 数据库：mysql
 主要功能：blog列表及正文，游客评论，分类列表及详情，blog归档，留言，文章搜索。
 用于记录个人学习心得。
-demo:www.mengge.ml
+demo:www.limz.xyz
